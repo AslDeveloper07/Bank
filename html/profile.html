@@ -1,19 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile page </title>
-    <link rel="stylesheet" href="./../css/style.css">
+    <link rel="stylesheet" href="./../css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+        integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-    <div class="navbar container">
-        <div class="logo">
-            <h1>Bankist</h1>
-        </div>
-        <div class="profile">
-            <img src="./../resource/img/avatar.jpg" alt="avatar ">
+    <div class="nav">
+        <div class="navbar container">
+            <div class="logo">
+                <h1 class="logotip">Bankist</h1>
+            </div>
+            <div class="profile">
+                <img id="avatarka" class="avatar" src="./../resource/img/avatar.jpg" alt="avatar ">
+            </div>
         </div>
     </div>
+    <div class="hisob content">
+        <div class="current_balance">
+            <h2>Current balance</h2>
+            <p id="date"></p>
+        </div>
+        <div class="balance">
+            <h1>$ <span id="balance"></span></h1>
+        </div>
+
+    </div>
+    <div class="bank content">
+        <div class="bank_times">
+            <div class="felter">
+                <input type="search" class="search_input" placeholder="Search..." id="searchInput">
+                <button class="filterBtn">
+                    <i class="ri-filter-line"></i>
+                </button>
+            </div>
+
+            <div class="history">
+                <div class="title">
+                    <h3>TYPE</h3>
+                    <h3>AMOUNT</h3>
+                    <h3>DATE</h3>
+                    <h3>SYMBOL OF TYPE</h3>
+                </div>
+                <div class="tarix">
+                    <p>Asilbek;</p>
+                    <p>fdghvjbk</p>
+                    <p>vbjhnkml,</p>
+                    <i id="set" class="ri-arrow-up-circle-fill"></i>
+                </div>
+                <div class="tarix">
+                    <p>Asilbek;</p>
+                    <p>fdghvjbk</p>
+                    <p>vbjhnkml,</p>
+                    <i id="buy" class="ri-arrow-down-circle-fill"></i>
+                </div>
+                <div class="tarix">
+                    <p>Asilbek;</p>
+                    <p>fdghvjbk</p>
+                    <p>vbjhnkml,</p>
+                    <i id="set" class="ri-arrow-up-circle-fill"></i>
+                </div>
+                <div class="tarix">
+                    <p>Asilbek;</p>
+                    <p>fdghvjbk</p>
+                    <p>vbjhnkml,</p>
+                    <i id="buy" class="ri-arrow-down-circle-fill"></i>
+                </div>
+                <div class="tarix">
+                    <p>Asilbek;</p>
+                    <p>fdghvjbk</p>
+                    <p>vbjhnkml,</p>
+                    <i id="set" class="ri-arrow-up-circle-fill"></i>
+                </div>
+                <div class="tarix">
+                    <p>Asilbek;</p>
+                    <p>fdghvjbk</p>
+                    <p>vbjhnkml,</p>
+                    <i id="buy" class="ri-arrow-down-circle-fill"></i>
+                </div>
+                <div class="tarix">
+                    <p>Asilbek;</p>
+                    <p>fdghvjbk</p>
+                    <p>vbjhnkml,</p>
+                    <i id="set" class="ri-arrow-up-circle-fill"></i>
+                </div>
+                <div class="tarix">
+                    <p>Asilbek;</p>
+                    <p>fdghvjbk</p>
+                    <p>vbjhnkml,</p>
+                    <i id="buy" class="ri-arrow-down-circle-fill"></i>
+                </div>
+                <div class="tarix">
+                    <p>Asilbek;</p>
+                    <p>fdghvjbk</p>
+                    <p>vbjhnkml,</p>
+                    <i id="set" class="ri-arrow-up-circle-fill"></i>
+                </div>
+                <div class="tarix">
+                    <p>Asilbek;</p>
+                    <p>fdghvjbk</p>
+                    <p>vbjhnkml,</p>
+                    <i id="buy" class="ri-arrow-down-circle-fill"></i>
+                </div>
+                <div class="tarix">
+                    <p>Asilbek;</p>
+                    <p>fdghvjbk</p>
+                    <p>vbjhnkml,</p>
+                    <i id="set" class="ri-arrow-up-circle-fill"></i>
+                </div>
+                <div class="tarix">
+                    <p>Asilbek;</p>
+                    <p>fdghvjbk</p>
+                    <p>vbjhnkml,</p>
+                    <i id="buy" class="ri-arrow-down-circle-fill"></i>
+                </div>
+                <div class="tarix">
+                    <p>Asilbek;</p>
+                    <p>fdghvjbk</p>
+                    <p>vbjhnkml,</p>
+                    <i id="set" class="ri-arrow-up-circle-fill"></i>
+                </div>
+                <div class="tarix">
+                    <p>Asilbek;</p>
+                    <p>fdghvjbk</p>
+                    <p>vbjhnkml,</p>
+                    <i id="buy" class="ri-arrow-down-circle-fill"></i>
+                </div>
+            </div>
+        </div>
+        <div class="bank_work">
+            <div class="moneys">
+                <p>Transformer Money</p>
+                <div class="transforInp">
+                    <input type="number" class="money_input" id="input1">
+                    <input type="number" class="money_input" id="input2">
+                    <button class="submitBtn" id="transformBtn">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+
+            </div>
+            <div class="out_money">
+                <p>
+                    Requist Money
+                </p>
+                <div class="transforInp">
+                    <input type="number" class="money_input" id="requistInp">
+                    <button class="submitBtn">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="close_accaunt">
+                <p>
+                    Close Accaunt
+                </p>
+                <div class="transforInp">
+                    <input type="number" class="money_input" id="closeBtn">
+                    <button class="submitBtn">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="balance_work content">
+        <div class="balans_money">
+            <p>IN <span id="kirdi"></span></p>
+            <p>OUT <span id="chiqdi"></span></p>
+        </div>
+        <div class="time">
+            You will logged out in <span id="time"></span>
+        </div>
+    </div>
+    <script src="./../javaScript/profile.js"></script>
 </body>
+
 </html>
