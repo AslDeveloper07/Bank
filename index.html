@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bank</title>
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank</title>
+  <link rel="stylesheet" href="./css/login.css">
 </head>
 <body>
-    <div class="login">
-        <label for="email">Email</label>
-        <input id="email" type="email" placeholder="Emailingizni kiriting">
-        <label for="parol">Password</label>
-        <input id="parol" type="password" placeholder="Parolingizni kiriting">
-        <button class="button" id="submitBtn">
-Submit
-        </button>
-    </div>
+  <!-- Loader -->
+  <div class="loader" id="loader"></div>
+
+  <div class="container" id="loginForm">
+    <form class="form" id="form" action="javascript:void(0);">
+      <p class="title">Login Form</p>
+      <input placeholder="Username" class="username input" type="text" required />
+      <input placeholder="Password" class="password input" type="password" required />
+      <button class="btn" type="submit">Login</button>
+    </form>
+  </div>
+
+<script src="./javaScript/login.js"></script>
+
 </body>
+
 </html>

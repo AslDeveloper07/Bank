@@ -1,53 +1,133 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+body{
+    background-color: #030712;
 }
-body {
-    font-family: "Roboto", sans-serif;
-  background-color: rgb(255, 255, 255);
+::selection {
+  background-color: #00a7f563;
+}
+
+.container {
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.login {
+
+.form {
+  margin-top: 180px;
+  width: 400px;
+  height: 400px;
+  background-image: linear-gradient(to bottom, #00a7f559, #030712);
   display: flex;
+  align-items: center;
   flex-direction: column;
-  justify-content: center;
-  width: 350px;
-  margin-top: 160px;
-  background-color: rgb(235, 235, 235);
-  padding: 10px;
-  border-radius: 5px;
-  gap: 10px;
+  border-radius: 0.5rem;
 }
-input {
-    padding: 5px 5px;
-    width: 100%;
+
+.title {
+  color: #00a7f5;
+  margin: 3rem 0;
+  font-size: 2rem;
+}
+
+.input {
+  margin: 0.5rem 0;
+  padding: 1rem 0.5rem;
+  width: 20rem;
+  background-color: inherit;
+  color: #00a7f5;
+  border: none;
   outline: none;
-  border-radius: 6px;
-  border:  2px solid rgba(128, 128, 128, 0.384);
-  transition:  0.3s ease;
+  border-bottom: 1px solid #00a7f5;
+  transition: all 400ms;
 }
-input:hover{
-    border:  2px solid rgba(1, 170, 1, 0.479);
+.input:hover {
+  background-color: rgba(30, 49, 90, 0.445);
+  border: none;
+  border-radius: 0.5rem;
 }
-input:focus{
-    border:  2px solid green;
+.btn {
+  height: 3rem;
+  width: 20rem;
+  margin-top: 3rem;
+  background-color: #00a7f5;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1.2rem;
+  transition: all 400ms;
+  cursor: pointer;
+  box-shadow:
+    0 0 10px #00a7f5,
+    0 0 10px #00a7f5;
 }
-label{
-    margin-bottom: -10px;
-    font-size: 12px;
+.btn:hover {
+  background-color: #00a7f5;
+  box-shadow: none;
 }
-.button{
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: none;
-    background-color: green;
-    color: white;
-    margin-top: 20px;
+.username::placeholder{
+  color:  #00a7f5;
+}
+.password::placeholder{
+  color:  #00a7f5;
+}
+
+
+
+
+
+
+
+
+
+
+/* Loader style */
+.loader {
+  width: 54.8px;
+  height: 54.8px;
+  color: #00a7f5;
+  position: relative;
+  background: radial-gradient(11.2px, currentColor 94%, #0000);
+  display: none;
+  margin: 30px auto;
+  top: 300px;
+}
+
+.loader:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(10.08px at bottom right, #0000 94%, currentColor) top left,
+    radial-gradient(10.08px at bottom left, #0000 94%, currentColor) top right,
+    radial-gradient(10.08px at top right, #0000 94%, currentColor) bottom left,
+    radial-gradient(10.08px at top left, #0000 94%, currentColor) bottom right;
+  background-size: 22.4px 22.4px;
+  background-repeat: no-repeat;
+  animation: loader 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+}
+
+@keyframes loader {
+  33% {
+    inset: -11.2px;
+    transform: rotate(0deg);
+  }
+
+  66% {
+    inset: -11.2px;
+    transform: rotate(90deg);
+  }
+
+  100% {
+    inset: 0;
+    transform: rotate(90deg);
+  }
+}
+
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.hidden {
+  display: none;
 }

@@ -14,6 +14,15 @@ const buyIcon = document.getElementById("buy");
 const requistInp = document.getElementById("requistInp");
 const closeBtn = document.getElementById("closeBtn");
 const time = document.getElementById("time");
+const requistBtn = document.getElementById("requistBtn");
+const closesAkkBtn = document.getElementById("closesAkkBtn");
+
+const typeTxt = document.getElementById("types");
+const amountTxt = document.getElementById("amounte");
+const dateStatus = document.getElementById("datese");
+const symbolIcon = document.getElementById("symbol");
+
+
 // console.log(
 //   kirdi,
 //   chiqdi,
@@ -27,24 +36,32 @@ const time = document.getElementById("time");
 //   setIcon,
 //   buyIcon,
 //   requistInp,
+//   time,
 //   closeBtn,
-//   time
+//   requistBtn,
+//   closesAkkBtn,
+//   typeTxt,
+//   amountTxt,
+//   dateStatus,
+//   symbolIcon
 // );
 
 
-const accaunts=[
-    {
-        owner:"Asilbek",
-        ownerImage:'./../resource/img/avatar.jpg',
-        userName: "Asilbekjon",
-        password: 'root2008',
-        balance: 2345236475
-    },
-    {
-        owner:"Azizbek",
-        ownerImage:'./../resource/img/avatar.jpg',
-        userName: "Azizbekjon",
-        password: 'root2010',
-        balance: 3543646546
-    },
-]
+
+// LocalStorage'dan foydalanuvchi ma’lumotlarini olish
+const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+if (user) {
+  // Foydalanuvchi ma'lumotlarini sahifaga joylash
+  avatar.src = user.ownerImage;
+  balance.textContent = user.balance.toLocaleString("en-US") + " UZS";
+
+  // (ixtiyoriy) Foydalanuvchi nomini chiqarish
+  const usernameDisplay = document.getElementById("username");
+  if (usernameDisplay) {
+    usernameDisplay.textContent = `Welcome, ${user.owner}`;
+  }
+} else {
+  // Agar localStorage'da foydalanuvchi bo‘lmasa, login sahifasiga qaytarish
+  window.location.href = "login.html";
+}
