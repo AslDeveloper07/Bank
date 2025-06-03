@@ -241,14 +241,14 @@ li {
 .card {
   position: absolute;
   top: 65px;
-  right: 170px;
+  right: 70px;
   width: 180px;
   background-color: rgba(36, 40, 50, 1);
   background-image: linear-gradient(
     139deg,
-    #081025 0%,
-    #030712 0%,
-    #030712 100%
+    #0a101f 0%,
+    #0a101f 0%,
+    #0a101f 100%
   );
 border:  1px solid  #00a7f528;
   border-radius: 10px;
