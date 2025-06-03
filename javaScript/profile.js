@@ -13,7 +13,7 @@ const setIcon = document.getElementById("set");
 const buyIcon = document.getElementById("buy");
 const requistInp = document.getElementById("requistInp");
 const closeBtn = document.getElementById("closeBtn");
-const timer = document.getElementById("time");
+const vaqt = document.getElementById("time");
 const requistBtn = document.getElementById("requistBtn");
 const closesAkkBtn = document.getElementById("closesAkkBtn");
 const modalProfile = document.getElementById("modal");
@@ -47,17 +47,13 @@ logOutBtn.addEventListener("click", () => {
 closeBtn.addEventListener("click", closeModal);
 closesAkkBtn.addEventListener("click", closeModal);
 
-
 // Modalni yopadigan hamma funksiyalar
 function closeModal() {
   modalProfile.classList.add("hidden");
   modalProfile.classList.remove("flex");
   isModalOpen = false;
 }
-
-
-
-// time funksionalliklari
+// vaqt
 function showRealTime() {
   const now = new Date();
 
@@ -65,11 +61,9 @@ function showRealTime() {
   const minutes = now.getMinutes().toString().padStart(2, "0");
   const seconds = now.getSeconds().toString().padStart(2, "0");
 
-  time.textContent = `${hours}:${minutes}:${seconds}`;
+  vaqt.textContent = `${hours}:${minutes}:${seconds}`;
 }
 
-// Har soniyada vaqtni yangilab borish
 setInterval(showRealTime, 1000);
 
-// Dastlab sahifa yuklanganda ham vaqt ko‘rsatilishi uchun
 showRealTime();
