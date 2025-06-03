@@ -88,7 +88,7 @@ body{
   background: radial-gradient(11.2px, currentColor 94%, #0000);
   display: none;
   margin: 30px auto;
-  top: 300px;
+  top: 350px;
 }
 
 .loader:before {

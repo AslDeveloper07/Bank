@@ -5,11 +5,6 @@ const loginForm = document.getElementById('loginForm');
 
 
 
-
-
-
-
-
 // kichkinagina datacha
 const accaunts = [
     {
@@ -39,5 +34,5 @@ form.addEventListener('submit', function (e) {
   // 2 soniyadan so'ng profile sahifasiga o'tish
   setTimeout(() => {
     window.location.href = './html/profile.html';
-  }, 2500);
+  }, 1000);
 });
