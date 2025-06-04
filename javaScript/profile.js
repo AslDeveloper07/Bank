@@ -1,27 +1,17 @@
 "use strict";
 
+const avatar = document.getElementById("avatarka");
 const kirdi = document.getElementById("kirdi");
 const chiqdi = document.getElementById("chiqdi");
+const depossitInp = document.getElementById("deposit");
+const spendBtn = document.getElementById("spendBtn");
 const search = document.getElementById("searchInput");
+const depositBtn = document.getElementById("depositBtn");
 const balanceMoney = document.getElementById("balance");
-const avatar = document.getElementById("avatarka");
-const date = document.getElementById("date");
-const transformInp1 = document.getElementById("input1");
-const transformInp2 = document.getElementById("input2");
-const transformBtn = document.getElementById("transformBtn");
-const setIcon = document.getElementById("set");
-const buyIcon = document.getElementById("buy");
-const requistInp = document.getElementById("requistInp");
-const closeBtn = document.getElementById("closeBtn");
-const vaqt = document.getElementById("time");
-const requistBtn = document.getElementById("requistBtn");
-const closesAkkBtn = document.getElementById("closesAkkBtn");
 const modalProfile = document.getElementById("modal");
-const typeTxt = document.getElementById("types");
-const amountTxt = document.getElementById("amounte");
-const dateStatus = document.getElementById("datese");
-const symbolIcon = document.getElementById("symbol");
 const logOutBtn = document.getElementById("logOut");
+const vaqt = document.getElementById("time");
+const closesAkkBtn = document.getElementById("closesAkkBtn");
 
 let isModalOpen = false;
 
@@ -44,7 +34,7 @@ logOutBtn.addEventListener("click", () => {
 });
 
 // Modalni yopish
-closeBtn.addEventListener("click", closeModal);
+// closeBtn.addEventListener("click", closeModal);
 closesAkkBtn.addEventListener("click", closeModal);
 
 // Modalni yopadigan hamma funksiyalar

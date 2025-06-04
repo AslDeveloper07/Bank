@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
         integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -20,6 +22,7 @@
                 <h1 class="logotip">Bankist</h1>
             </div>
             <div class="profile">
+                <span id="ownerName"></span>
                 <img id="avatarka" class="avatar" src="./../resource/img/avatar.jpg" alt="avatar ">
             </div>
         </div>
@@ -28,9 +31,9 @@
     <div class="hisob content">
         <div class="current_balance">
             <h2>Current balance</h2>
-            <p id="date"></p>
+            <!-- <p id="date"></p> -->
         </div>
-        <div class="balance">
+        <div class="PulMiqdor">
             <h1> <i class="fa-solid fa-dollar-sign"></i> <span id="balance"></span></h1>
         </div>
 
@@ -107,94 +110,50 @@
         <div class="bank_times">
             <div class="felter">
                 <input type="search" class="search_input" placeholder="Search..." id="searchInput">
-                
+                <div class="dropdown">
+                    <button>Amount</button>
+                    <div class="dropdown-content">
+                        <div>Type</div>
+                        <div>Data</div>
+                        <div>Amount</div>
+                    </div>
+                </div>
             </div>
 
-<div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Position</th>
-                    <th>Salary</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>John Doe</td>
-                    <td>Developer</td>
-                    <td>$75,000</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Jane Smith</td>
-                    <td>Designer</td>
-                    <td>$65,000</td>
-                </tr>
-                <!-- Add more rows as needed -->
-                <tr>
-                    <td>3</td>
-                    <td>Mike Johnson</td>
-                    <td>Manager</td>
-                    <td>$85,000</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Sarah Williams</td>
-                    <td>Analyst</td>
-                    <td>$70,000</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>David Brown</td>
-                    <td>Engineer</td>
-                    <td>$80,000</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Emily Davis</td>
-                    <td>Developer</td>
-                    <td>$78,000</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Robert Wilson</td>
-                    <td>Designer</td>
-                    <td>$68,000</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Lisa Taylor</td>
-                    <td>Manager</td>
-                    <td>$90,000</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Thomas Anderson</td>
-                    <td>Developer</td>
-                    <td>$82,000</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>Jennifer Martinez</td>
-                    <td>Analyst</td>
-                    <td>$72,000</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Symbol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Deposit</td>
+                            <td>$75,000</td>
+                            <td>09/12/2025</td>
+                            <td><i class="ri-arrow-up-circle-line" style="font-weight: 100; font-size: 20px;"></i></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="bank_work">
             <div class="moneys">
                 <p class="titleMoney">Deposited Money</p>
                 <div class="transforInp">
-                    <input type="number" class="money_input" id="input1">
-                    <input type="number" class="money_input" id="input2">
-                    <button class="submitBtn" id="transformBtn">
-                        <i class="ri-arrow-right-line"></i>
+                    <input type="number" class="money_input" id="deposit">
+                    <button class="submitBtn" id="depositBtn" style="background-color: rgb(21, 255, 0);">
+                        Deposit
+                        <i class="ri-arrow-up-fill"></i>
+                    </button>
+                    <button class="submitBtn" id="spendBtn" style="background-color: red;">
+                        Spend
+                        <i class="ri-arrow-down-fill"></i>
                     </button>
                 </div>
 
@@ -203,12 +162,7 @@
                 <p class="titleMoney">
                     Spent Money
                 </p>
-                <div class="transforInp">
-                    <input type="number" class="money_input" id="requistInp">
-                    <button class="submitBtn" id="requistBtn">
-                        <i class="ri-arrow-right-line"></i>
-                    </button>
-                </div>
+                <!-- biror nima yoziladi -->
             </div>
 
         </div>
@@ -223,7 +177,7 @@
             You will logged out in <span id="time"></span>
         </div> -->
     </div>
-    <script src="./../javaScript/profile.js"></script>
+    <script src="./../javaScript/dashboard.js"></script>
 </body>
 
 </html>

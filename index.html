@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bank</title>
   <link rel="stylesheet" href="./css/login.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
+
 </head>
 <body>
   <!-- Loader -->
@@ -15,52 +18,12 @@
     <form class="form" id="form" action="javascript:void(0);">
       <p class="title">Login Form</p>
       <input placeholder="Username" class="username input" id="ownerEmail" type="text" required />
-      <input placeholder="Password" class="password input" id="ownerEmail" type="password" required />
+      <input placeholder="Password" class="password input" id="ownerPass" type="password" required />
       <button class="btn" id="submitBtn" type="submit">Login</button>
     </form>
   </div>
 
 <script src="./javaScript/login.js"></script>
-<script>
-  const form = document.getElementById('form');
-const loader = document.getElementById('loader');
-const loginForm = document.getElementById('loginForm');
-
-
-
-
-// kichkinagina datacha
-const accaunts = [
-    {
-      owner: "Asilbek",
-      ownerImage: "./../resource/img/avatar.jpg",
-      email: "Asilbekjon@gmail.com",
-      password: "root2008",
-      balance: 234525,
-    },
-    {
-      owner: "Azizbek",
-      ownerImage: "./../resource/img/azizbek.png",
-      email: "Azizbekjon@gmail.com",
-      password: "root2010",
-      balance: 3543646,
-    },
-  ];
-
-
-// Loader funksiyasi
-form.addEventListener('submit', function (e) {
-  e.preventDefault(); // Formni to'g'ridan-to'g'ri yuborishni bloklaymiz
-
-  loginForm.classList.add('hidden');
-  loader.style.display = 'block';
-
-  // 2 soniyadan so'ng profile sahifasiga o'tish
-  setTimeout(() => {
-    window.location.href = './html/profile.html';
-  }, 1000);
-});
-</script>
 
 </body>
 

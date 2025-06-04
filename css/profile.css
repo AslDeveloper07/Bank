@@ -103,6 +103,7 @@ body {
   border: none;
   border-radius: 3px;
   padding: 5px 10px;
+  cursor: pointer;
 }
 .money_input {
   background-color: rgba(255, 255, 255, 0.836);
@@ -116,6 +117,7 @@ body {
   padding: 0 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 10px;
 }
 .search_input {
@@ -123,7 +125,7 @@ body {
   padding: 7px;
   outline: none;
   border-radius: 7px;
-  border: 1px solid #00a7f536;
+  border: 1px solid  #00a7f536;
   background-color: rgba(30, 49, 90, 0.445);
   transition: 0.4s ease;
   color: white;
@@ -221,9 +223,7 @@ li {
   display: flex;
   flex-direction: column;
 }
-.submitBtn {
-  cursor: pointer;
-}
+
 #amounte{
   color: rgb(0, 255, 0);
 }
@@ -231,7 +231,64 @@ li {
   font-size: 20px;
   margin: 0 0 20px 0;
 }
+/* Dropdown */
 
+    /* Dropdown konteyneri */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Tugma */
+    .dropdown button {
+      padding: 7px 20px;
+      border: 1px solid  #00a7f536;
+      background-color: #1a2640;
+      color: #00a7f5;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: 0.3s ease;
+      overflow: hidden;
+    }
+
+    /* Menyu */
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 86px;
+      border: 1px solid  #00a7f5;
+      background-color: #1a2640;
+      display: none;
+      z-index: 999;
+      border-radius: 6px;
+      font-size: 12px;
+      overflow: hidden;
+      margin-top: 2px;
+      overflow: visible;
+      box-shadow: 0 2px 8px #003953;
+    }
+
+    /* Hoverda menyuni ochish */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown button:hover{
+cursor: pointer;
+border: 1px solid #00a7f581;
+    }
+
+    /* Menyu itemlar */
+    .dropdown-content div {
+      border-bottom: 1px solid #00a7f53a;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    .dropdown-content div:hover {
+      background-color: #00a7f546;
+    }
 
 
 
