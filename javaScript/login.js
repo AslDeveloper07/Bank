@@ -27,14 +27,13 @@ const accaunts = [
   ];
 
 
-// Loader funksiyasi
 form.addEventListener('submit', function (e) {
-  e.preventDefault(); // Formni to'g'ridan-to'g'ri yuborishni bloklaymiz
+  e.preventDefault();
 
   loginForm.classList.add('hidden');
   loader.style.display = 'block';
 
-  // 2 soniyadan so'ng profile sahifasiga o'tish
+
   setTimeout(() => {
     window.location.href = './html/profile.html';
   }, 1000);
