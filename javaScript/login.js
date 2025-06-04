@@ -2,6 +2,9 @@ const form = document.getElementById('form');
 const loader = document.getElementById('loader');
 const loginForm = document.getElementById('loginForm');
 
+const ownerEmail = document.getElementById('ownerEmail');
+const ownerPass = document.getElementById('ownerEmail');
+const submitBtn = document.getElementById('submitBtn');
 
 
 

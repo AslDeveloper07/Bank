@@ -53,6 +53,7 @@ function closeModal() {
   modalProfile.classList.remove("flex");
   isModalOpen = false;
 }
+
 // vaqt
 function showRealTime() {
   const now = new Date();
