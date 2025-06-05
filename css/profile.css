@@ -32,13 +32,24 @@ body {
 .logotip {
   margin: 0;
 }
-#time {
+.ri-corner-down-left-fill,
+.ri-corner-down-right-fill{
+  margin-left: 30px;
+}
+#currentTime {
   color: #00a7f5;
 }
 .avatar {
   width: 40px;
   border-radius: 90px;
   cursor: pointer;
+  border: 2px solid  #00a7f5;
+  padding: 2px;
+  transition: all ease 0.4;
+}
+
+#balance{
+  color: rgb(0, 255, 0);
 }
 .hisob {
   display: flex;
@@ -71,27 +82,40 @@ body {
 .moneys {
   background: linear-gradient(
     338deg,
-   rgba(9, 255, 0, 0.185) 0%,
-    #00a7f51c 100%
+    rgba(0, 27, 58, 0.185) 0%,
+    #00a7f53f 100%
   );
   height: 50%;
   border-radius: 10px;
   backdrop-filter: blur(90px);
   padding: 20px;
-
 }
 .out_money {
   height: 50%;
   background: linear-gradient(
     338deg,
-   rgba(255, 0, 0, 0.185) 0%,
-    #00a7f51c 100%
+    rgba(0, 27, 58, 0.062) 0%,
+    #00a7f525 100%
   );
   backdrop-filter: blur(90px);
   border-radius: 10px;
   padding: 20px;
+  overflow: auto;
+  /* overflow: hidden; */
 }
-.profile{
+.out_money::-webkit-scrollbar{
+  display: none;
+}
+#users{
+  padding: 15px 20px 15px 10px;
+  border-left: 3px solid  #00a7f5;
+  border-radius: 10px;
+  background-color: #00395336;
+}
+.malumot{
+  padding: 0 0 10px 0;
+}
+.profile {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,13 +135,22 @@ body {
   cursor: pointer;
 }
 .money_input {
-  background-color: rgba(255, 255, 255, 0.836);
+  background-color: #1a2640;
   border: none;
   border-radius: 5px;
   padding: 5px;
   outline: none;
+  color: #00a7f5;
+  border: 1px solid #00a7f57c;
+  transition: 0.4s ease;
 }
+.money_input:focus{
+  border: 1px solid #00a7f5;
 
+}
+.money_input::placeholder{
+  color: #00a7f5;
+}
 .felter {
   padding: 0 10px;
   display: flex;
@@ -130,7 +163,7 @@ body {
   padding: 7px;
   outline: none;
   border-radius: 7px;
-  border: 1px solid  #00a7f536;
+  border: 1px solid #00a7f536;
   background-color: rgba(30, 49, 90, 0.445);
   transition: 0.4s ease;
   color: white;
@@ -141,12 +174,14 @@ body {
 .search_input:focus {
   border: 1px solid #00a7f5;
 }
-
+#ownerName{
+  font-size: 20px;
+}
 .table-container {
   width: 100%;
   overflow: auto;
   position: relative;
-  border-radius:7px 7px 10px 10px;
+  border-radius: 7px 7px 10px 10px;
   margin: 20px 0;
   border: 1px solid #00a7f54f;
 }
@@ -159,11 +194,13 @@ table {
 thead {
   position: sticky;
   top: 0;
-  background-color:  #00a7f5;
+  background-color: #00a7f5;
   z-index: 10;
+  box-shadow: -1px 19px 17px 2px #11151f88;
 }
 
-th, td {
+th,
+td {
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #00a7f534;
@@ -171,7 +208,7 @@ th, td {
 }
 
 th {
-  background-color:   #00a7f5;
+  background-color: #00a7f5;
   font-weight: bold;
 }
 
@@ -180,7 +217,7 @@ tbody {
   overflow-y: auto;
   max-height: 388px;
 }
-tbody::-webkit-scrollbar{
+tbody::-webkit-scrollbar {
   display: none;
 }
 
@@ -192,7 +229,7 @@ tr {
 
 /* Optional: Add hover effect */
 tbody tr:hover {
-  background-color:   #00a7f51e;
+  background-color: #00a7f51e;
 }
 h3 {
   font-size: 12px;
@@ -229,82 +266,71 @@ li {
   flex-direction: column;
 }
 
-#amounte{
+#amounte {
   color: rgb(0, 255, 0);
 }
-.titleMoney{
+.titleMoney {
   font-size: 20px;
   margin: 0 0 20px 0;
 }
 /* Dropdown */
 
-    /* Dropdown konteyneri */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
+/* Dropdown konteyneri */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-    /* Tugma */
-    .dropdown button {
-      padding: 7px 20px;
-      border: 1px solid  #00a7f536;
-      background-color: #1a2640;
-      color: #00a7f5;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: 0.3s ease;
-      overflow: hidden;
-    }
+/* Tugma */
+.dropdown button {
+  padding: 7px 20px;
+  border: 1px solid #00a7f536;
+  background-color: #1a2640;
+  color: #00a7f5;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s ease;
+  overflow: hidden;
+}
 
-    /* Menyu */
-    .dropdown-content {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 86px;
-      border: 1px solid  #00a7f5;
-      background-color: #1a2640;
-      display: none;
-      z-index: 999;
-      border-radius: 6px;
-      font-size: 12px;
-      overflow: hidden;
-      margin-top: 2px;
-      overflow: visible;
-      box-shadow: 0 2px 8px #003953;
-    }
+/* Menyu */
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 86px;
+  border: 1px solid #00a7f5;
+  background-color: #1a2640;
+  display: none;
+  z-index: 999;
+  border-radius: 6px;
+  font-size: 12px;
+  overflow: hidden;
+  margin-top: 2px;
+  overflow: visible;
+  box-shadow: 0 2px 8px #003953;
+}
 
-    /* Hoverda menyuni ochish */
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
+/* Hoverda menyuni ochish */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
-    .dropdown button:hover{
-cursor: pointer;
-border: 1px solid #00a7f581;
-    }
+.dropdown button:hover {
+  cursor: pointer;
+  border: 1px solid #00a7f581;
+}
 
-    /* Menyu itemlar */
-    .dropdown-content div {
-      border-bottom: 1px solid #00a7f53a;
-      padding: 10px 15px;
-      cursor: pointer;
-    }
+/* Menyu itemlar */
+.dropdown-content div {
+  border-bottom: 1px solid #00a7f53a;
+  padding: 10px 15px;
+  cursor: pointer;
+}
 
-    .dropdown-content div:hover {
-      background-color: #00a7f546;
-    }
-
-
-
-
-
-
-
-
-
-
-
+.dropdown-content div:hover {
+  background-color: #00a7f546;
+}
 
 /* Avatar bosilganda chiqadigan modal */
 .card {
@@ -319,7 +345,7 @@ border: 1px solid #00a7f581;
     #0a101f 0%,
     #0a101f 100%
   );
-border:  1px solid  #00a7f528;
+  border: 1px solid #00a7f528;
   border-radius: 10px;
   padding: 15px 0px;
   display: flex;
@@ -393,13 +419,12 @@ border:  1px solid  #00a7f528;
   font-size: 20px;
 }
 
-
-.hidden{
+.hidden {
   display: none;
 }
-  #kirdi{
-color: rgb(0, 255, 0);
-  }
-  #chiqdi{
-    color: rgb(255, 0, 0);
-      }
+#depositTotal {
+  color: rgb(0, 255, 0);
+}
+#spendTotal {
+  color: rgb(255, 0, 0);
+}

@@ -130,13 +130,13 @@
                             <th>Symbol</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody id="transactionList">
+                        <!-- <tr>
                             <td>Deposit</td>
                             <td>$75,000</td>
                             <td>09/12/2025</td>
                             <td><i class="ri-arrow-up-circle-line" style="font-weight: 100; font-size: 20px;"></i></td>
-                        </tr>
+                        </tr> -->
 
                     </tbody>
                 </table>
@@ -146,7 +146,7 @@
             <div class="moneys">
                 <p class="titleMoney">Deposited Money</p>
                 <div class="transforInp">
-                    <input type="number" class="money_input" id="deposit">
+                    <input type="number" class="money_input" id="deposit" placeholder="Enter Amount....">
                     <button class="submitBtn" id="depositBtn" style="background-color: rgb(21, 255, 0);">
                         Deposit
                         <i class="ri-arrow-up-fill"></i>
@@ -159,10 +159,48 @@
 
             </div>
             <div class="out_money">
-                <p class="titleMoney">
-                    Spent Money
-                </p>
-                <!-- biror nima yoziladi -->
+                <div class="malumot">
+                    <h2><span id="dear"></span></h2>
+                    <p>
+
+                        Welcome to our trusted banking system — where your financial security and growth come first.
+                        Our bank has been serving customers with dedication and integrity for over a decade.
+                        We believe in transparency, efficiency, and customer-centered services.
+                        Whether you're saving for the future or managing daily expenses, we are here to help.
+                        Our state-of-the-art digital banking tools offer you control, anywhere, anytime.
+
+                        We provide secure and seamless money transfers locally and internationally.
+                        Your financial data is protected with advanced encryption and multi-layer authentication.
+                        We offer customized financial solutions tailored to your personal or business needs.
+                        Access your account through our mobile or web platform with a user-friendly interface.
+                        Receive real-time transaction updates and balance notifications with ease.
+
+                        Our savings and investment plans are designed to help you grow your wealth steadily.
+                        Need financial advice? Our experienced consultants are just a call or message away.
+                        We also offer loans with flexible repayment options and competitive interest rates.
+                        Our credit and debit cards are accepted worldwide and come with exclusive rewards.
+                        Stay informed with regular account statements and transparent reporting.
+
+                        We value your trust more than anything.
+                        Every transaction you make is processed with the highest level of accuracy.
+                        Our 24/7 customer support is always available to resolve your concerns.
+                        You can freeze or unfreeze your card instantly for added control.
+                        With us, banking is no longer a task — it’s a smart and simple experience.
+
+                        We regularly update our system to give you faster and smoother operations.
+                        Security alerts and fraud detection are enabled by default for your protection.
+                        Track all your income, spending, and goals from your dashboard.
+                        Transfer funds between accounts with zero hassle and lightning speed.
+                        Our mission is to empower your financial journey with trust and innovation.
+
+                        Thank you for choosing our bank as your financial partner.
+                        We are honored to serve you and be part of your financial goals.
+                        Your continued support inspires us to do better every day.
+                        Together, let’s shape a financially secure future.
+<br><br>
+</p>
+<span id="users"></span>
+                </div>
             </div>
 
         </div>
@@ -170,12 +208,12 @@
     <!-- pasdagi pul qancha sarflandi qancha foyda kuroldi shu kabi sectionlar mavjud -->
     <div class="balance_work content">
         <div class="balans_money">
-            <p>IN <i class="fa-solid fa-dollar-sign"></i> <span id="kirdi">798279798</span></p>
-            <p>OUT <i class="fa-solid fa-dollar-sign"></i> <span id="chiqdi">245364785960</span></p>
+            <p>IN <i class="fa-solid fa-dollar-sign"></i> <span id="depositTotal"></span></p>
+            <p>OUT <i class="fa-solid fa-dollar-sign"></i> <span id="spendTotal"></span></p>
         </div>
-        <!-- <div class="time">
-            You will logged out in <span id="time"></span>
-        </div> -->
+        <div class="time">
+            You will logged out in <span id="currentTime"></span>
+        </div>
     </div>
     <script src="./../javaScript/dashboard.js"></script>
 </body>

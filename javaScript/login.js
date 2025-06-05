@@ -12,7 +12,7 @@ const accaunts = [
     ownerImage: "./../resource/img/avatar.jpg",
     email: "Asilbekjon@gmail.com",
     password: "root2008",
-    balance: 2345236475,
+    balance: 2000,
     transactions: [],
   },
   {
@@ -20,7 +20,7 @@ const accaunts = [
     ownerImage: "./../resource/img/azizbek.png",
     email: "Azizbekjon@gmail.com",
     password: "root2010",
-    balance: 3543646546,
+    balance: 8000,
     transactions: [],
   },
 ];
