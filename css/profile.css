@@ -62,7 +62,7 @@ body {
   align-self: center;
   gap: 20px;
   width: 100%;
-  /* height: 500px; */
+  height: 500px;
 }
 
 @media (max-width: 600px) {
@@ -70,6 +70,7 @@ body {
   .bank{
     display: flex;
     flex-direction: column-reverse;
+    height: auto;
   }
   .out_money{
     display: none;
@@ -78,13 +79,17 @@ body {
     width: 100%;
   }
   .content{
-    max-width: 470px;
+    margin: 0 10px;
   }
   .time{
     display: none;
   }
   .bank_times{
-    /* width: 100%; */
+    width: auto;
+    height: 500px;
+  }
+  .bank_work{
+    width: auto;
   }
 }
 
