@@ -220,14 +220,14 @@ body {
   gap: 4px;
   letter-spacing: 1px;
   font-weight: 500;
-  color: white;
+  color: #030712;
   justify-content: center;
 }
 #depositBtn {
-  background-color: rgba(21, 255, 0, 0.61);
+  background-color: rgba(21, 255, 0, 0.795);
 }
 #spendBtn {
-  background-color: rgba(255, 0, 0, 0.582);
+  background-color: rgba(255, 0, 0, 0.815);
 }
 .money_input {
   background-color: #1a2640;
