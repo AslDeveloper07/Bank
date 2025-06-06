@@ -25,32 +25,6 @@ const accaunts = [
   },
 ];
 
-// // inputga kirib kelayotgan ma'lumotlarni tekshirish
-// submitBtn.addEventListener('click', () => {
-//   const email = ownerEmail.value.trim().toLowerCase();
-//   const password = ownerPass.value.trim();
-
-//   const accountFind = accaunts.find((accaunt) => {
-//     return accaunt.email.toLowerCase() === email && accaunt.password === password;
-//   });
-
-//   console.log(accountFind);
-// });
-
-// // Agar tugri bulsa Profile.html ga utkazib yuborish uchun
-
-// // Loader ishlashi uchun
-// form.addEventListener('submit', function (e) {
-//   e.preventDefault();
-
-//   loginForm.classList.add('hidden');
-//   loader.style.display = 'block';
-
-//   setTimeout(() => {
-//     window.location.href = './html/profile.html';
-//   }, 1000);
-// });
-
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
