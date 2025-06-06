@@ -75,9 +75,9 @@ body {
   .out_money {
     display: none;
   }
-.logotip{
-  font-size: 27px;
-}
+  .logotip {
+    font-size: 27px;
+  }
   .content {
     margin: 0 10px;
   }
@@ -102,20 +102,40 @@ body {
   .current_balances {
     display: none;
   }
-  tr{
+  tr {
     font-size: 16px;
   }
-  .balance_work{
+  .balance_work {
     position: fixed;
     bottom: 0;
     right: 0;
     left: 0;
   }
-  .balans_money{
+  .balans_money {
     text-align: center;
     display: flex;
     justify-content: center;
     align-self: center;
+  }
+  #deposit {
+    padding: 10px;
+  }
+  #depositBtn {
+    background-color: rgb(13, 160, 0);
+  }
+  #spendBtn {
+    background-color: red;
+  }
+  #depositBtn,
+  #spendBtn {
+    font-size: 17px;
+    padding: 10px;
+    width: 100%;
+  }
+  #modal{
+    position: absolute;
+    top: 65px;
+    right: 10px;
   }
 }
 
@@ -150,7 +170,7 @@ body {
   backdrop-filter: blur(90px);
   padding: 20px;
 }
-.btnTxt{
+.btnTxt {
   margin: 0;
 }
 .out_money {
@@ -198,6 +218,16 @@ body {
   cursor: pointer;
   display: flex;
   gap: 4px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  color: white;
+  justify-content: center;
+}
+#depositBtn {
+  background-color: rgba(21, 255, 0, 0.61);
+}
+#spendBtn {
+  background-color: rgba(255, 0, 0, 0.582);
 }
 .money_input {
   background-color: #1a2640;
