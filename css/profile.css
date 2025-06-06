@@ -104,6 +104,18 @@ body {
   tr{
     font-size: 16px;
   }
+  .balance_work{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+  .balans_money{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+  }
 }
 
 .btns {
@@ -302,6 +314,7 @@ h3 {
   justify-content: space-between;
   color: white;
   align-items: center;
+  background-color: #030712;
 }
 .balans_money {
   display: flex;
