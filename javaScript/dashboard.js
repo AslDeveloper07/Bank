@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const search = document.getElementById("searchInput");
   const currentTimeEl = document.getElementById("currentTime");
   const dearUser = document.getElementById("dear");
-  const users = document.getElementById("users");
+  // const users = document.getElementById("users");
 
   let isModalOpen = false;
 
@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
   ownerName.textContent = dashboard.owner ?? "Username";
   balance.textContent = dashboard.balance.toFixed(2) ?? "0.00";
   dearUser.textContent = `Dear ${dashboard.owner}, welcome back!`;
-  users.textContent = ` Thank you, ${dashboard.owner}, for being a valuable part of our community.`;
+  // users.textContent = ` Thank you, ${dashboard.owner}, for being a valuable part of our community.`;
 
   avatar.addEventListener("click", () => {
     isModalOpen = !isModalOpen;

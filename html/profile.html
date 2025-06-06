@@ -30,7 +30,7 @@
     <!-- Hisob raqamlarini kursatish uchun section -->
     <div class="hisob content">
         <div class="current_balance">
-            <h2>Current balance</h2>
+            <h2 class="current_balances">Current balance</h2>
             <!-- <p id="date"></p> -->
         </div>
         <div class="PulMiqdor">
@@ -131,13 +131,6 @@
                         </tr>
                     </thead>
                     <tbody id="transactionList">
-                        <!-- <tr>
-                            <td>Deposit</td>
-                            <td>$75,000</td>
-                            <td>09/12/2025</td>
-                            <td><i class="ri-arrow-up-circle-line" style="font-weight: 100; font-size: 20px;"></i></td>
-                        </tr> -->
-
                     </tbody>
                 </table>
             </div>
@@ -147,14 +140,16 @@
                 <p class="titleMoney">Deposited Money</p>
                 <div class="transforInp">
                     <input type="number" class="money_input" id="deposit" placeholder="Enter Amount....">
-                    <button class="submitBtn" id="depositBtn" style="background-color: rgb(21, 255, 0);">
-                        Deposit
-                        <i class="ri-arrow-up-fill"></i>
-                    </button>
-                    <button class="submitBtn" id="spendBtn" style="background-color: red;">
-                        Spend
-                        <i class="ri-arrow-down-fill"></i>
-                    </button>
+                    <div class="btns">
+                        <button class="submitBtn" id="depositBtn" style="background-color: rgb(21, 255, 0);">
+                            Deposit
+                            <i class="ri-arrow-up-fill"></i>
+                        </button>
+                        <button class="submitBtn" id="spendBtn" style="background-color: red;">
+                            Spend
+                            <i class="ri-arrow-down-fill"></i>
+                        </button>
+                    </div>
                 </div>
 
             </div>
@@ -199,7 +194,7 @@
                         Together, let’s shape a financially secure future.
 <br><br>
 </p>
-<span id="users"></span>
+<!-- <span id="users"></span> -->
                 </div>
             </div>
 
