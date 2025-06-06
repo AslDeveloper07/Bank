@@ -101,6 +101,9 @@ body {
   .current_balances {
     display: none;
   }
+  tr{
+    font-size: 16px;
+  }
 }
 
 .btns {
