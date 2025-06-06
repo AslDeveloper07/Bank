@@ -14,7 +14,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const search = document.getElementById("searchInput");
   const currentTimeEl = document.getElementById("currentTime");
   const dearUser = document.getElementById("dear");
-  // const users = document.getElementById("users");
 
   let isModalOpen = false;
 
@@ -29,7 +28,6 @@ window.addEventListener("DOMContentLoaded", () => {
   ownerName.textContent = dashboard.owner ?? "Username";
   balance.textContent = dashboard.balance.toFixed(2) ?? "0.00";
   dearUser.textContent = `Dear ${dashboard.owner}, welcome back!`;
-  // users.textContent = ` Thank you, ${dashboard.owner}, for being a valuable part of our community.`;
 
   avatar.addEventListener("click", () => {
     isModalOpen = !isModalOpen;
@@ -65,13 +63,22 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if (type === "spend" && dashboard.balance >= amount) {
       dashboard.balance -= amount;
     } else {
-      Toastify({
-        text: "Not enough balance!",
-        duration: 2000,
-        gravity: "top",
-        position: "center",
-        backgroundColor: "red",
-      }).showToast();
+      Swal.fire({
+        toast: true,
+        position: "top-end",
+        icon: "error",
+        text: `Hisobingizda mablag' yetarli emas`,
+        showConfirmButton: false,
+        timer: 2000,
+        background: "rgb(255, 203, 203)",
+        color: "rgb(255, 116, 116)",
+        showClass: {
+          popup: "swal2-show-top swal2-animate-popup",
+        },
+        hideClass: {
+          popup: "swal2-hide-top swal2-animate-popup",
+        },
+      });
       return;
     }
 
@@ -128,21 +135,39 @@ window.addEventListener("DOMContentLoaded", () => {
     const amount = parseFloat(depossitInp.value);
     if (amount > 0) {
       addTransaction(amount, "deposit");
-      Toastify({
-        text: `Deposited ${amount.toFixed(2)} $!`,
-        duration: 2000,
-        gravity: "bottom",
-        position: "right",
-        backgroundColor: "green",
-      }).showToast();
+      Swal.fire({
+        toast: true,
+        position: "top-end",
+        icon: "success",
+        text: `Deposited ${amount} $!`,
+        showConfirmButton: false,
+        timer: 2000,
+        background: "rgb(207, 255, 200)",
+        color: "rgb(35, 173, 0)",
+        showClass: {
+          popup: "swal2-show-top swal2-animate-popup",
+        },
+        hideClass: {
+          popup: "swal2-hide-top swal2-animate-popup",
+        },
+      });
     } else {
-      Toastify({
-        text: `Invalid deposit amount: ${amount} $!`,
-        duration: 2000,
-        gravity: "top",
-        position: "center",
-        backgroundColor: "red",
-      }).showToast();
+      Swal.fire({
+        toast: true,
+        position: "top-end",
+        icon: "error",
+        text: `Iltimos mablag' kiriting!`,
+        showConfirmButton: false,
+        timer: 2000,
+        background: "rgb(255, 203, 203)",
+        color: "rgb(255, 116, 116)",
+        showClass: {
+          popup: "swal2-show-top swal2-animate-popup",
+        },
+        hideClass: {
+          popup: "swal2-hide-top swal2-animate-popup",
+        },
+      });
     }
     depossitInp.value = "";
   });
@@ -151,24 +176,42 @@ window.addEventListener("DOMContentLoaded", () => {
     const amount = parseFloat(depossitInp.value);
     if (amount > 0 && dashboard.balance >= amount) {
       addTransaction(amount, "spend");
-      Toastify({
+      Swal.fire({
+        toast: true,
+        position: "top-end",
+        icon: "success", // to'g'ri yozildi
         text: `Spent ${amount.toFixed(2)} $!`,
-        duration: 2000,
-        gravity: "bottom",
-        position: "left",
-        backgroundColor: "orange",
-      }).showToast();
+        showConfirmButton: false,
+        timer: 2000,
+        background: "rgb(207, 255, 200)",
+        color: "rgb(35, 173, 0)",
+        showClass: {
+          popup: "swal2-show-top swal2-animate-popup",
+        },
+        hideClass: {
+          popup: "swal2-hide-top swal2-animate-popup",
+        },
+      });
     } else {
-      Toastify({
+      Swal.fire({
+        toast: true,
+        position: "top-end",
+        icon: "error",
         text:
           amount <= 0
             ? `Invalid spend amount: ${amount} $!`
             : `Not enough balance: ${dashboard.balance.toFixed(2)} $!`,
-        duration: 2000,
-        gravity: "top",
-        position: "center",
-        backgroundColor: "red",
-      }).showToast();
+        showConfirmButton: false,
+        timer: 2000,
+        background: "rgb(255, 203, 203)",
+        color: "rgb(255, 116, 116)",
+        showClass: {
+          popup: "swal2-show-top swal2-animate-popup",
+        },
+        hideClass: {
+          popup: "swal2-hide-top swal2-animate-popup",
+        },
+      });
     }
     depossitInp.value = "";
   });

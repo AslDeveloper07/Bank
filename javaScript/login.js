@@ -45,13 +45,21 @@ form.addEventListener("submit", function (e) {
       window.location.href = "./html/profile.html";
     }, 1000);
   } else {
-    Toastify({
-      text: "Email yoki password xato !",
-      duration: 2000,
-      gravity: "top",
-      position: "right",
-      backgroundColor: "red",
-      // close: true
-    }).showToast();
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon: "error",
+      text: `Email yoki Password xato !`,
+      showConfirmButton: false,
+      timer: 3000,
+      background: "rgb(255, 203, 203)",
+      color: "rgb(255, 116, 116)",
+      showClass: {
+        popup: "swal2-show-top swal2-animate-popup",
+      },
+      hideClass: {
+        popup: "swal2-hide-top swal2-animate-popup",
+      },
+    });
   }
 });

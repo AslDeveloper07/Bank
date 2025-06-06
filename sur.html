@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SweetAlert2 bilan Alert</title>
+  <!-- SweetAlert2 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <button id="showAlertBtn" style="
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  ">
+    Alertni ko‘rsatish
+  </button>
+
+  <!-- SweetAlert2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    const btn = document.getElementById('showAlertBtn');
+
+    btn.addEventListener('mouseenter', () => {
+      btn.style.backgroundColor = '#45a049';
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.backgroundColor = '#4caf50';
+    });
+
+    btn.addEventListener('click', () => {
+      Swal.fire({
+        title: 'Salom!',
+        text: 'Bu SweetAlert2 yordamida chiroyli ko‘rsatilgan xabar.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        timer: 3000,
+        timerProgressBar: true,
+        showClass: {
+          popup: 'swal2-show swal2-animate-popup'
+        },
+        hideClass: {
+          popup: 'swal2-hide swal2-animate-popup'
+        }
+      });
+    });
+  </script>
+</body>
+</html>
