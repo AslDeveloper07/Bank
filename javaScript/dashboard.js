@@ -1,48 +1,109 @@
 window.addEventListener("DOMContentLoaded", () => {
-  const profileName = document.getElementById("ownerName");
-  const logOut = document.getElementById("logOut");
-  const balance = document.getElementById("balance");
-  const avatar = document.getElementById("avatarka");
-  const ownerName = document.getElementById("ownerName");
-  const modalProfile = document.getElementById("modal");
-  const spendBtn = document.getElementById("spendBtn");
-  const depositBtn = document.getElementById("depositBtn");
-  const transactionList = document.getElementById("transactionList");
-  const depossitInp = document.getElementById("deposit");
-  const depositTotalEl = document.getElementById("depositTotal");
-  const spendTotalEl = document.getElementById("spendTotal");
-  const search = document.getElementById("searchInput");
-  const currentTimeEl = document.getElementById("currentTime");
-  const dearUser = document.getElementById("dear");
+  function Dashboard() {
+    this.avatar = document.getElementById("avatarka");
+    this.ownerName = document.getElementById("ownerName");
+    this.balanceEl = document.getElementById("balance");
+    this.dearUser = document.getElementById("dear");
+    this.modalProfile = document.getElementById("modal");
+    this.logOut = document.getElementById("logOut");
+    this.spendBtn = document.getElementById("spendBtn");
+    this.depositBtn = document.getElementById("depositBtn");
+    this.transactionList = document.getElementById("transactionList");
+    this.depositInput = document.getElementById("deposit");
+    this.depositTotalEl = document.getElementById("depositTotal");
+    this.spendTotalEl = document.getElementById("spendTotal");
+    this.searchInput = document.getElementById("searchInput");
+    this.currentTimeEl = document.getElementById("currentTime");
+    this.isModalOpen = false;
 
-  let isModalOpen = false;
+    this.data = JSON.parse(localStorage.getItem("accaunts")) || {
+      owner: "Guest",
+      balance: 0,
+      transactions: [],
+      ownerImage: "./../resource/img/defaultavatar.jpg",
+    };
 
-  let dashboard = JSON.parse(localStorage.getItem("accaunts")) || {
-    owner: "Guest",
-    balance: 0,
-    transactions: [],
-    ownerImage: "./../resource/img/defaultavatar.jpg",
+    this.init();
+  }
+
+  Dashboard.prototype.init = function () {
+    this.renderProfile();
+    this.updateUI();
+    this.setEvents();
+    this.updateTime();
+    setInterval(() => this.updateTime(), 1000);
   };
 
-  avatar.src = dashboard.ownerImage ?? "./../resource/img/defaultavatar.jpg";
-  ownerName.textContent = dashboard.owner ?? "Username";
-  balance.textContent = dashboard.balance.toFixed(2) ?? "0.00";
-  dearUser.textContent = `Dear ${dashboard.owner}, welcome back!`;
+  Dashboard.prototype.renderProfile = function () {
+    this.avatar.src =
+      this.data.ownerImage ?? "./../resource/img/defaultavatar.jpg";
+    this.ownerName.textContent = this.data.owner ?? "Username";
+    this.balanceEl.textContent = this.data.balance.toFixed(2);
+    this.dearUser.textContent = `Dear ${this.data.owner}, welcome back!`;
+  };
 
-  avatar.addEventListener("click", () => {
-    isModalOpen = !isModalOpen;
-    modalProfile.classList.toggle("hidden", !isModalOpen);
-    modalProfile.classList.toggle("flex", isModalOpen);
-  });
+  Dashboard.prototype.setEvents = function () {
+    this.avatar.addEventListener("click", () => {
+      this.isModalOpen = !this.isModalOpen;
+      this.modalProfile.classList.toggle("hidden", !this.isModalOpen);
+      this.modalProfile.classList.toggle("flex", this.isModalOpen);
+    });
 
-  logOut.addEventListener("click", () => {
-    if (confirm("Profiledan chiqishni hohlaysizmi?")) {
-      localStorage.removeItem("accaunts");
-      window.location.replace("./../index.html");
+    this.logOut.addEventListener("click", () => {
+      if (confirm("Profiledan chiqishni hohlaysizmi?")) {
+        localStorage.removeItem("accaunts");
+        window.location.replace("./../index.html");
+      }
+    });
+
+    this.depositBtn.addEventListener("click", () =>
+      this.handleTransaction("deposit")
+    );
+    this.spendBtn.addEventListener("click", () =>
+      this.handleTransaction("spend")
+    );
+
+    this.searchInput.addEventListener("input", (e) => {
+      const keyword = e.target.value.toLowerCase().trim();
+      const filtered = this.data.transactions.filter(
+        (t) =>
+          t.type.toLowerCase().includes(keyword) ||
+          t.amount.toString().includes(keyword) ||
+          t.date.toLowerCase().includes(keyword)
+      );
+      this.updateUI(filtered);
+    });
+  };
+
+  Dashboard.prototype.handleTransaction = function (type) {
+    const amount = parseFloat(this.depositInput.value);
+    const isValid = amount > 0;
+
+    if (!isValid) {
+      this.showAlert("error", `Iltimos mablag' kiriting!`);
+      this.depositInput.value = "";
+      return;
     }
-  });
 
-  const addTransaction = (amount, type) => {
+    if (type === "spend" && this.data.balance < amount) {
+      this.showAlert(
+        "error",
+        `Not enough balance: ${this.data.balance.toFixed(2)} $!`
+      );
+      this.depositInput.value = "";
+      return;
+    }
+
+    this.addTransaction(amount, type);
+
+    this.showAlert(
+      "success",
+      `${type === "deposit" ? "Deposited" : "Spent"} ${amount.toFixed(2)} $!`
+    );
+    this.depositInput.value = "";
+  };
+
+  Dashboard.prototype.addTransaction = function (amount, type) {
     const transaction = {
       type,
       amount,
@@ -56,186 +117,78 @@ window.addEventListener("DOMContentLoaded", () => {
         second: "2-digit",
       }),
     };
-    dashboard.transactions.push(transaction);
 
     if (type === "deposit") {
-      dashboard.balance += amount;
-    } else if (type === "spend" && dashboard.balance >= amount) {
-      dashboard.balance -= amount;
-    } else {
-      Swal.fire({
-        toast: true,
-        position: "top-end",
-        icon: "error",
-        text: `Hisobingizda mablag' yetarli emas`,
-        showConfirmButton: false,
-        timer: 2000,
-        background: "rgb(255, 203, 203)",
-        color: "rgb(255, 116, 116)",
-        showClass: {
-          popup: "swal2-show-top swal2-animate-popup",
-        },
-        hideClass: {
-          popup: "swal2-hide-top swal2-animate-popup",
-        },
-      });
-      return;
+      this.data.balance += amount;
+    } else if (type === "spend") {
+      this.data.balance -= amount;
     }
 
-    localStorage.setItem("accaunts", JSON.stringify(dashboard));
-    balance.textContent = dashboard.balance.toFixed(2);
-    updateUI();
+    this.data.transactions.push(transaction);
+    localStorage.setItem("accaunts", JSON.stringify(this.data));
+    this.updateUI();
   };
 
-  const updateUI = (filtered = dashboard.transactions) => {
-    balance.textContent = dashboard.balance.toFixed(2);
-    transactionList.innerHTML = "";
+  Dashboard.prototype.updateUI = function (
+    transactions = this.data.transactions
+  ) {
+    this.balanceEl.textContent = this.data.balance.toFixed(2);
+    this.transactionList.innerHTML = "";
 
     let totalDeposit = 0;
     let totalSpend = 0;
 
-    filtered.forEach((trans) => {
+    transactions.forEach((t) => {
       const tr = document.createElement("tr");
-      const isDeposit = trans.type === "deposit";
+      const isDeposit = t.type === "deposit";
 
-      const tdType = document.createElement("td");
-      tdType.textContent = trans.type.toUpperCase();
-      tdType.style.textTransform = "uppercase";
-      tdType.style.color = isDeposit ? "rgb(0, 255, 0)" : "red";
-
-      const tdAmount = document.createElement("td");
-      tdAmount.textContent = `${trans.amount.toFixed(2)} $`;
-
-      const tdDate = document.createElement("td");
-      tdDate.textContent = trans.date;
-
-      const tdIcon = document.createElement("td");
-      tdIcon.innerHTML = `<i class="ri-corner-down-${
-        isDeposit ? "left" : "right"
-      }-fill" style="color:${
+      tr.innerHTML = `
+        <td style="text-transform: uppercase; color: ${
+          isDeposit ? "rgb(0, 255, 0)" : "red"
+        }">${t.type}</td>
+        <td>${t.amount.toFixed(2)} $</td>
+        <td>${t.date}</td>
+        <td><i class="ri-corner-down-${
+          isDeposit ? "left" : "right"
+        }-fill" style="color: ${
         isDeposit ? "rgb(0, 255, 0)" : "rgb(253, 0, 0)"
-      }"></i>`;
+      }"></i></td>
+      `;
 
-      tr.appendChild(tdType);
-      tr.appendChild(tdAmount);
-      tr.appendChild(tdDate);
-      tr.appendChild(tdIcon);
+      this.transactionList.appendChild(tr);
 
-      transactionList.appendChild(tr);
-
-      if (isDeposit) totalDeposit += trans.amount;
-      else totalSpend += trans.amount;
+      if (isDeposit) totalDeposit += t.amount;
+      else totalSpend += t.amount;
     });
 
-    depositTotalEl.textContent = totalDeposit.toFixed(2);
-    spendTotalEl.textContent = totalSpend.toFixed(2);
+    this.depositTotalEl.textContent = totalDeposit.toFixed(2);
+    this.spendTotalEl.textContent = totalSpend.toFixed(2);
   };
 
-  depositBtn.addEventListener("click", () => {
-    const amount = parseFloat(depossitInp.value);
-    if (amount > 0) {
-      addTransaction(amount, "deposit");
-      Swal.fire({
-        toast: true,
-        position: "top-end",
-        icon: "success",
-        text: `Deposited ${amount} $!`,
-        showConfirmButton: false,
-        timer: 2000,
-        background: "rgb(207, 255, 200)",
-        color: "rgb(35, 173, 0)",
-        showClass: {
-          popup: "swal2-show-top swal2-animate-popup",
-        },
-        hideClass: {
-          popup: "swal2-hide-top swal2-animate-popup",
-        },
-      });
-    } else {
-      Swal.fire({
-        toast: true,
-        position: "top-end",
-        icon: "error",
-        text: `Iltimos mablag' kiriting!`,
-        showConfirmButton: false,
-        timer: 2000,
-        background: "rgb(255, 203, 203)",
-        color: "rgb(255, 116, 116)",
-        showClass: {
-          popup: "swal2-show-top swal2-animate-popup",
-        },
-        hideClass: {
-          popup: "swal2-hide-top swal2-animate-popup",
-        },
-      });
-    }
-    depossitInp.value = "";
-  });
-
-  spendBtn.addEventListener("click", () => {
-    const amount = parseFloat(depossitInp.value);
-    if (amount > 0 && dashboard.balance >= amount) {
-      addTransaction(amount, "spend");
-      Swal.fire({
-        toast: true,
-        position: "top-end",
-        icon: "success", // to'g'ri yozildi
-        text: `Spent ${amount.toFixed(2)} $!`,
-        showConfirmButton: false,
-        timer: 2000,
-        background: "rgb(207, 255, 200)",
-        color: "rgb(35, 173, 0)",
-        showClass: {
-          popup: "swal2-show-top swal2-animate-popup",
-        },
-        hideClass: {
-          popup: "swal2-hide-top swal2-animate-popup",
-        },
-      });
-    } else {
-      Swal.fire({
-        toast: true,
-        position: "top-end",
-        icon: "error",
-        text:
-          amount <= 0
-            ? `Invalid spend amount: ${amount} $!`
-            : `Not enough balance: ${dashboard.balance.toFixed(2)} $!`,
-        showConfirmButton: false,
-        timer: 2000,
-        background: "rgb(255, 203, 203)",
-        color: "rgb(255, 116, 116)",
-        showClass: {
-          popup: "swal2-show-top swal2-animate-popup",
-        },
-        hideClass: {
-          popup: "swal2-hide-top swal2-animate-popup",
-        },
-      });
-    }
-    depossitInp.value = "";
-  });
-
-  search.addEventListener("input", (e) => {
-    const keyword = e.target.value.toLowerCase().trim();
-    const filtered = dashboard.transactions.filter((t) => {
-      return (
-        t.type.toLowerCase().includes(keyword) ||
-        t.amount.toString().includes(keyword) ||
-        t.date.toLowerCase().includes(keyword)
-      );
-    });
-
-    updateUI(filtered);
-  });
-
-  function updateCurrentTime() {
+  Dashboard.prototype.updateTime = function () {
     const now = new Date();
-    currentTimeEl.textContent = now.toLocaleString();
-  }
+    this.currentTimeEl.textContent = now.toLocaleString();
+  };
 
-  setInterval(updateCurrentTime, 1000);
-  updateCurrentTime();
+  Dashboard.prototype.showAlert = function (icon, message) {
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon,
+      text: message,
+      showConfirmButton: false,
+      timer: 2000,
+      background:
+        icon === "success" ? "rgb(207, 255, 200)" : "rgb(255, 203, 203)",
+      color: icon === "success" ? "rgb(35, 173, 0)" : "rgb(255, 116, 116)",
+      showClass: {
+        popup: "swal2-show-top swal2-animate-popup",
+      },
+      hideClass: {
+        popup: "swal2-hide-top swal2-animate-popup",
+      },
+    });
+  };
 
-  updateUI();
+  new Dashboard();
 });
