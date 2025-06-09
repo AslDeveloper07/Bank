@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let isModalOpen = false;
 
   let dashboard = JSON.parse(localStorage.getItem("accaunts")) || {
-    owner: "Guest",
+    owner: "User",
     balance: 0,
     transactions: [],
     ownerImage: "./../resource/img/defaultavatar.jpg",
