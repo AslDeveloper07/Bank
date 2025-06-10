@@ -89,7 +89,7 @@ class Dashboard {
     }
     this.depossitInp.value = "";
   }
-
+  
   handleSearch(e) {
     const keyword = e.target.value.toLowerCase().trim();
     const filtered = this.dashboard.transactions.filter(
